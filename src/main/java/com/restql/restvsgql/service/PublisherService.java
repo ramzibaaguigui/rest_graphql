@@ -27,4 +27,9 @@ public class PublisherService {
 
         return publisherRepository.save(publisher);
     }
+
+    public void deleteAll() {
+
+        publisherRepository.deleteAll();
+    }
 }

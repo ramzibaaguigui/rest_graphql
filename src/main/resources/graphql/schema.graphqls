@@ -1,3 +1,8 @@
+
+# scalar definition
+scalar Date
+
+# type definition
 type Publisher {
     id: ID!
     name: String!
@@ -11,6 +16,7 @@ type Book {
     title: String!
     publisher: Publisher!
     authors: [Author!]!
+    createdAt: Date
 }
 
 type Author {
@@ -18,3 +24,18 @@ type Author {
     name: String!
     books: [Book!]!
 }
+
+# Query definition
+type Query {
+    allAuthors: [Author!]!
+    allBooks: [Book!]!
+    recentBooks: [Book!]!
+    authors: [Author!]!
+    publishers: [Publisher!]!
+    book(id: ID!): Book
+    author(id: ID!): Author
+    publisher(id: ID!): Publisher
+}
+
+# the possible operations that can be performed
+

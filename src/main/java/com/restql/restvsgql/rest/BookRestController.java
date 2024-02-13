@@ -6,9 +6,11 @@ import com.restql.restvsgql.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("rest/book")
+@Controller
+@RequestMapping("/rest/book")
 public class BookRestController {
 
     private final BookService bookService;
@@ -51,5 +53,12 @@ public class BookRestController {
         } catch (Exception ex) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("/allBooks")
+    public ResponseEntity<?> getAllBooks() {
+        return ResponseEntity.ok(
+                bookService.getAllBooks()
+        );
     }
 }

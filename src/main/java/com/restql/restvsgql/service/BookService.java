@@ -93,4 +93,13 @@ public class BookService {
             throw new BookNotFoundException(bookId);
         }
     }
+
+
+    public Iterable<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public void deleteAll() {
+        bookRepository.deleteAll();
+    }
 }
