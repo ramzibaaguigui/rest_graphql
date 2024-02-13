@@ -102,7 +102,7 @@ public class DatabasePopulation implements CommandLineRunner {
         Book book = new Book();
         book.setTitle(RandomStringUtils.random(40, ALPHABET));
         book.setIsbn(RandomStringUtils.random(12));
-        book.setCreatedAt(Date.from(Instant.now()));
+        book.setCreatedAt(Instant.now());
         return book;
     }
 

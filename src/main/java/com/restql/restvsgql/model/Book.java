@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +35,7 @@ public class Book {
     private String title;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private Instant createdAt;
 
     @ManyToOne()
     @JoinColumn(name = "publisher_id")

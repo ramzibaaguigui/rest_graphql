@@ -2,6 +2,7 @@ package com.restql.restvsgql.service;
 
 import com.restql.restvsgql.exception.AuthorNotFoundException;
 import com.restql.restvsgql.exception.BookNotFoundException;
+import com.restql.restvsgql.graphql.Input.BookInput;
 import com.restql.restvsgql.model.Author;
 import com.restql.restvsgql.model.Book;
 import com.restql.restvsgql.model.Publisher;
@@ -10,12 +11,13 @@ import com.restql.restvsgql.repository.BookRepository;
 import com.restql.restvsgql.repository.PublisherRepository;
 import com.restql.restvsgql.rest.payload.CreateBookPayload;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
 import java.time.Instant;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,7 +42,7 @@ public class BookService {
         // sort the books by date
         return bookRepository.findAll().stream().sorted(
                         Comparator.comparingLong(
-                                (Book book) -> book.getCreatedAt().getTime()).reversed()
+                                (Book book) -> book.getCreatedAt().getNano()).reversed()
                 )
                 .limit(count)
                 .collect(Collectors.toList());
@@ -79,7 +81,7 @@ public class BookService {
         book.setIsbn(payload.getIsbn());
         book.setAuthors(authors);
         book.setPublisher(publisher);
-        book.setCreatedAt(Date.from(Instant.now()));
+        book.setCreatedAt(Instant.now());
 
         return bookRepository.save(book);
     }
@@ -102,4 +104,36 @@ public class BookService {
     public void deleteAll() {
         bookRepository.deleteAll();
     }
+
+    @QueryMapping("queryMapping")
+    public Iterable<Book> queryBooks(String query) {
+        return bookRepository.findAll()
+                .stream()
+                .filter(book -> book.getTitle().contains(query))
+                .collect(Collectors.toList());
+    }
+
+
+    public Book addBook(BookInput input) {
+        Book book = new Book();
+        book.setTitle(input.getTitle());
+        book.setTitle(input.getTitle());
+        book.setIsbn(input.getIsbn());
+
+        // find the publisher
+        Publisher publisher = publisherRepository.getReferenceById(input.getPublisherId());
+
+        // find the authors
+        List<Author> authors = authorRepository.findAuthorsByIdIn(input.getAuthorsIds());
+
+        // set the publisher
+        book.setPublisher(publisher);
+        book.setAuthors(authors);
+        book = bookRepository.save(book);
+        return book;
+    }
+
+
+
+
 }

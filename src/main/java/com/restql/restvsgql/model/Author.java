@@ -9,6 +9,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.lang.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -36,6 +37,6 @@ public class Author {
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name= "book_id")
     )
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
 }

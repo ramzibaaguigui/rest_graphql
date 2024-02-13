@@ -21,7 +21,7 @@ type Book {
 
 type Author {
     id: ID!
-    name: String
+    name: String!
     books: [Book!]!
 }
 
@@ -34,7 +34,7 @@ input BookInput {
 }
 
 input AuthorInput {
-    name: String!
+    name: String
 }
 
 

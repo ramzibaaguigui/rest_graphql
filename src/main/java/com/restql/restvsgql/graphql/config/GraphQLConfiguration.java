@@ -7,21 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
-@Configuration
+//@Configuration
 public class GraphQLConfiguration {
 
     @Bean
     public RuntimeWiringConfigurer runtimeWiringConfigurer() {
         return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.Date);
     }
-/*
-    @Bean
-    public GraphQL graphQL(GraphQLSchema schema) {
-        return GraphQL.newGraphQL(schema).build();
-    }
 
-    @Bean
-    public GraphQLSchema graphQLSchema() {
-
-    }*/
 }
