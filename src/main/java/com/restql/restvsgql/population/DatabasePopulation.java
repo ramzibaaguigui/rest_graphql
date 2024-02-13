@@ -114,8 +114,8 @@ public class DatabasePopulation implements CommandLineRunner {
 
     private Publisher generatePublisher() {
         Publisher publisher = new Publisher();
-        publisher.setName(RandomStringUtils.random(23));
-        publisher.setAddress(RandomStringUtils.random(22));
+        publisher.setName(RandomStringUtils.random(23, ALPHABET));
+        publisher.setAddress(RandomStringUtils.random(22, ALPHABET));
         publisher.setPhone(RandomStringUtils.random(10, NUMERIC));
         return publisher;
     }

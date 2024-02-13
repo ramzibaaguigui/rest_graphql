@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PublisherService {
 
@@ -42,5 +44,9 @@ public class PublisherService {
         publisher.setPhone(input.getName());
 
         return publisherRepository.save(publisher);
+    }
+
+    public List<Publisher> getAllPublishers() {
+        return publisherRepository.findAll();
     }
 }
