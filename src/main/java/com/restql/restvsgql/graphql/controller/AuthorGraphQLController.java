@@ -39,4 +39,17 @@ public class AuthorGraphQLController {
         return authorService.createAuthor(input);
     }
 
+    @MutationMapping("updateAuthor")
+    public Author updateAuthor(@Argument AuthorInput input) {
+        return null;
+    }
+
+    @MutationMapping("deleteAuthor")
+    public Author deleteAuthor(@Argument AuthorInput input) {
+        return null;
+
+    }
+
+
+
 }

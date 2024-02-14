@@ -61,9 +61,21 @@ type Query {
 }
 
 type Mutation {
+
+    # add mutations
     addBook(input: BookInput!): Book!
     addAuthor(input: AuthorInput!): Author!
     addPublisher(input: PublisherInput!): Publisher!
+
+    # update mutations
+    updateBook(input: BookInput!): Book!
+    updateAuthor(input: AuthorInput!): Author!
+    updatePublisher(input: PublisherInput!): Publisher!
+
+    # delete mutations
+    deleteBook(input: BookInput!): Book
+    deleteAuthor(input: AuthorInput!): Author
+    deletePublisher(input: PublisherInput!): Publisher
 }
 
 # Schema definition

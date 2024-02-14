@@ -12,4 +12,5 @@ public class BookInput {
     private List<Long> authorsIds;
     private Long publisherId;
 
+
 }
