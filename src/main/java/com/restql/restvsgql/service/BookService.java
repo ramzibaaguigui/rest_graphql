@@ -115,6 +115,7 @@ public class BookService {
 
 
     public Book addBook(BookInput input) {
+        System.out.println("Adding book with input title: " + input.getTitle());
         Book book = new Book();
         book.setTitle(input.getTitle());
         book.setTitle(input.getTitle());
