@@ -3,6 +3,8 @@ package com.restql.restvsgql.service;
 import com.restql.restvsgql.graphql.Input.AuthorInput;
 import com.restql.restvsgql.model.Author;
 import com.restql.restvsgql.repository.AuthorRepository;
+import com.restql.restvsgql.repository.BookRepository;
+import com.restql.restvsgql.rest.payload.CreateAuthorPayload;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +17,14 @@ public class AuthorService {
 
 
     private AuthorRepository authorRepository;
-
+    private BookRepository bookRepository;
     @Autowired
     public AuthorService(
-            AuthorRepository authorRepository
+            AuthorRepository authorRepository,
+            BookRepository bookRepository
     ) {
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
 
@@ -44,5 +48,24 @@ public class AuthorService {
         author =  authorRepository.save(author);
         System.out.println(author);
         return author;
+    }
+
+
+    public Author createAuthor(CreateAuthorPayload payload) {
+        Author author = new Author();
+
+        author.setName(payload.getName());
+        author.setBooks(new ArrayList<>());
+        author =  authorRepository.save(author);
+        System.out.println(author);
+        return author;
+    }
+    public List<Author> getBookAuthors(Long bookId) {
+        return bookRepository.getReferenceById(bookId)
+                .getAuthors();
+    }
+
+    public void deleteAuthor(Long id) {
+        authorRepository.deleteById(id);
     }
 }
