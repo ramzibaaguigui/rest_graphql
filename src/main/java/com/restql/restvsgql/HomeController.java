@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/controller")
+@RequestMapping("/")
 public class HomeController {
 
     private AuthorService authorService;
     private BookService bookService;
     private PublisherService publisherService;
 
+
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
 
     @Autowired
     public HomeController(AuthorService authorService, BookService bookService, PublisherService publisherService) {

@@ -6,6 +6,7 @@ import com.restql.restvsgql.repository.PublisherRepository;
 import com.restql.restvsgql.rest.payload.CreatePublisherPayload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class PublisherService {
         publisherRepository.deleteAll();
     }
 
-    public Publisher createPublisher(@Argument   PublisherInput input) {
+    public Publisher createPublisher(@Argument PublisherInput input) {
         Publisher publisher = new Publisher();
         publisher.setName(input.getName());
         publisher.setAddress(input.getAddress());
@@ -48,5 +49,12 @@ public class PublisherService {
 
     public List<Publisher> getAllPublishers() {
         return publisherRepository.findAll();
+    }
+
+    @QueryMapping("publisher")
+    public Publisher getPublisherById(
+            @Argument("id") Long publisherId
+    ) {
+        return publisherRepository.getReferenceById(publisherId);
     }
 }

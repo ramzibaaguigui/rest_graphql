@@ -28,7 +28,14 @@ public class PublisherGraphQLController {
         return publisherService.createPublisher(input);
     }
 
-    @QueryMapping
+    @QueryMapping("getPublisher")
+    public Publisher getPublisher(
+            @Argument Long publisherId
+    ) {
+        return publisherService.getPublisherById(publisherId);
+    }
+
+    @QueryMapping("allPublishers")
     public List<Publisher> allPublishers() {
         return publisherService.getAllPublishers();
 

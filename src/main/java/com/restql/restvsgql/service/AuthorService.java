@@ -5,7 +5,6 @@ import com.restql.restvsgql.model.Author;
 import com.restql.restvsgql.repository.AuthorRepository;
 import com.restql.restvsgql.repository.BookRepository;
 import com.restql.restvsgql.rest.payload.CreateAuthorPayload;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,4 +67,5 @@ public class AuthorService {
     public void deleteAuthor(Long id) {
         authorRepository.deleteById(id);
     }
+
 }

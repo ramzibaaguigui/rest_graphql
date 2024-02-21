@@ -9,7 +9,6 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
 
 @Controller
 public class AuthorGraphQLController {
@@ -35,19 +34,13 @@ public class AuthorGraphQLController {
 
     @MutationMapping("addAuthor")
     public Author addAuthor(@Argument AuthorInput input) {
-
         return authorService.createAuthor(input);
     }
 
-    @MutationMapping("updateAuthor")
-    public Author updateAuthor(@Argument AuthorInput input) {
-        return null;
-    }
-
     @MutationMapping("deleteAuthor")
-    public Author deleteAuthor(@Argument AuthorInput input) {
-        return null;
-
+    public void deleteAuthor(@Argument AuthorInput input) {
+        Long id = input.getId();
+        authorService.deleteAuthor(id);
     }
 
 
