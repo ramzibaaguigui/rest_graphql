@@ -52,32 +52,15 @@
    - Update the `application.properties` file with the above database configuration.
    - Ensure Hibernate DDL auto mode is set to `update`.
 
-3. **GraphQL Configuration:**
-   - Enable GraphQL servlet and set the mapping URL in `application.properties`.
-
-4. **GraphiQL Configuration (Optional):**
-   - Enable GraphiQL for a user-friendly GraphQL interface.
-
-5. **Voyager Configuration (Optional):**
-   - Enable Voyager to explore GraphQL APIs visually.
-
-6. **GraphQL Console Configuration:**
-   - Enable the GraphQL console for testing and debugging.
-
-7. **Springdoc Swagger-UI Configuration:**
-   - Configure Springdoc Swagger-UI path and API docs path.
-
-8. **Run the Application:**
+3. **Run the Application:**
    - Build and run your Spring Boot application using Maven:
      ```
      mvn spring-boot:run
      ```
 
-9. **Accessing Endpoints:**
+4. **Accessing Endpoints:**
    - GraphQL endpoint: `http://localhost:8080/graphql`
    - GraphiQL interface (if enabled): `http://localhost:8080/graphiql`
 
-10. **Start Querying and Developing:**
-   - You're now ready to query your GraphQL API and develop your application features.
 
 Follow these steps to set up and run your Spring project with GraphQL integration successfully.
