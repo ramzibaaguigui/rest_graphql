@@ -37,10 +37,6 @@
 
 - **Enabled:** true
 
-## Springdoc Swagger-UI Configuration
-
-- **Swagger-UI Path:** /swagger-ui.html
-- **API Docs Path:** /api-docs
 
 ## Instructions for Setup and Running
 
