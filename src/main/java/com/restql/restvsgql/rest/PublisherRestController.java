@@ -34,4 +34,6 @@ public class PublisherRestController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+
 }
