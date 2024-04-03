@@ -1,3 +1,6 @@
+You can download the project report from [here](https://github.com/ramzibaaguigui/rest_graphql/blob/main/RestGraphqlProjectReport.pdf)
+
+
 # Spring Project Setup Guide
 
 ## Database Configuration
